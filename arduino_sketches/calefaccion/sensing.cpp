@@ -3,10 +3,13 @@
 
 const static int NO_OF_SENSORS = 1;
 const static int SENSORS_PIN = 10;
+const static int ADDRESS_SIZE = 8;
+const static int DATA_SIZE = 9;
+
 
 SensorReader::SensorReader(){
-  this->_initialized = false;
-  this->_address = new byte[8];
+  _initialized = false;
+  _address = new byte[ADDRESS_SIZE];
 }
 
 boolean SensorReader::init(){
@@ -15,10 +18,12 @@ boolean SensorReader::init(){
     
     OneWire ds(SENSORS_PIN);
     ds.reset_search();
-    if(
-    
-    _initialized = true;
+    if(ds.search(_address)){
+      _logger.log("Found new device. Address", _address, ADDRESS_SIZE);
+      _initialized = true;
   }
   return _initialized;
 }
 
+  
+  
