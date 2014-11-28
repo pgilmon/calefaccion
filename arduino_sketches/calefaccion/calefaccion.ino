@@ -1,5 +1,4 @@
-#include <OneWire.h>
-#include <DallasTemperature.h>
+
 
 static const int ONEWIRE_BUS = 2;
 static const int NO_OF_SENSORS = 2;
